@@ -17,12 +17,15 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'role' => 'admin',
+            'password' => '12345678',
         ]);
 
         User::factory()->create([
             'name' => 'Customer 1',
             'email' => 'customer1@gmail.com',
             'role' => 'customer',
+            'password' => '12345678',
+
         ]);
     }
 }
