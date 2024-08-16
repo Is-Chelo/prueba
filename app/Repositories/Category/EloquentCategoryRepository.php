@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Repositories\Attendance;
+namespace App\Repositories\Category;
 
-use App\MobileApp\Repositories\Offer\CategoryInterface;
 use App\Models\Category;
 use App\Traits\CRUDOperations;
 use Exception;

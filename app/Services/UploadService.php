@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MobileApp\Services;
+namespace App\Services;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -13,28 +13,28 @@ class UploadService
         $filename = time() . '.' . $file->extension();
 
         //TODO: GUARDAMOS EN LA CARPETA NORMAL
-        Storage::put("$folder/normal/" . $filename, file_get_contents($file->path()));
+        Storage::put("$folder/" . $filename, file_get_contents($file->path()));
 
-        // TODO: RECORTAR IMAGEN
-        $image = $file;
-        $img = file_get_contents($image->path());
-        $dimensions = getimagesizefromstring($img);
-        $width = $dimensions[0];
-        $height = $dimensions[1];
-        // $size = 300;
-        $size = min($width, $height);
+        // // TODO: RECORTAR IMAGEN
+        // $image = $file;
+        // $img = file_get_contents($image->path());
+        // $dimensions = getimagesizefromstring($img);
+        // $width = $dimensions[0];
+        // $height = $dimensions[1];
+        // // $size = 300;
+        // $size = min($width, $height);
 
-        $square = imagecreatetruecolor($size, $size);
-        imagecopy($square, imagecreatefromstring($img), 0, 0, ($width - $size) / 2, ($height - $size) / 2, $size, $size);
+        // $square = imagecreatetruecolor($size, $size);
+        // imagecopy($square, imagecreatefromstring($img), 0, 0, ($width - $size) / 2, ($height - $size) / 2, $size, $size);
 
-        ob_start();
-        imagepng($square);
-        $imgData = ob_get_clean();
-        Storage::put("$folder/thumb/" . $filename, $imgData);
+        // ob_start();
+        // imagepng($square);
+        // $imgData = ob_get_clean();
+        // Storage::put("$folder/thumb/" . $filename, $imgData);
 
         // Liberar memoria
-        imagedestroy($square);
-        
+        // imagedestroy($square);
+
         return $filename;
     }
 

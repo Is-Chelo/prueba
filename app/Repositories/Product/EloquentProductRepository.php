@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Attendance;
+namespace App\Repositories\Product;
 
-use App\MobileApp\Repositories\Offer\ProductInterface;
+
 use App\Models\Product;
 use App\Traits\CRUDOperations;
 use Exception;

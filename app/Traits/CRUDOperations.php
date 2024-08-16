@@ -75,9 +75,9 @@ trait CRUDOperations
         return $model;
     }
 
-    public function delete(Model $model)
+    public function delete(int $id)
     {
-        $model = $this->model::where('id', $model->id)->first();
+        $model = $this->model::where('id', $id)->first();
         if ($model == null) throw new NotFoundException('Id inválido.');
         $this->model::where('id', $model->id)->delete();
         return $model;

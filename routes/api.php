@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// TODO: Categorias
+Route::get('/categorias', [CategoryController::class, 'index']);
+Route::get('/categorias/{id}', [CategoryController::class, 'show']);
+Route::post('/categorias', [CategoryController::class, 'store']);
+Route::put('/categorias/{id}', [CategoryController::class, 'update']);
+Route::delete('/categorias/{id}', [CategoryController::class, 'destroy']);
+
+// TODO: Productos
+Route::get('/productos', [ProductController::class, 'index']);
+Route::get('/productos/{id}', [ProductController::class, 'show']);
+Route::post('/productos', [ProductController::class, 'store']);
+Route::put('/productos/{id}', [ProductController::class, 'update']);
+Route::delete('/productos/{id}', [ProductController::class, 'destroy']);

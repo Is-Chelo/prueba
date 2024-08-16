@@ -21,7 +21,7 @@ class ApiResponseService
         );
     }
 
-    public static function create($message = 'Success', $data = [], $others = [], $code = Response::HTTP_OK): JsonResponse
+    public static function create($message = 'Success', $data = [], $others = [], $code = Response::HTTP_CREATED): JsonResponse
     {
         return response()->json(
             [
@@ -35,7 +35,7 @@ class ApiResponseService
         );
     }
 
-    public static function error($message = 'Error', $errors = [], $data = [],  $others = [], $code = Response::HTTP_OK): JsonResponse
+    public static function error($message = 'Error', $errors = [], $data = [],  $others = [], $code = Response::HTTP_BAD_REQUEST): JsonResponse
     {
         return response()->json(
             [
@@ -91,7 +91,8 @@ class ApiResponseService
         );
     }
 
-    public static function warning($message = 'Warning', $errors = [], $data = [], $others = [], $code = Response::HTTP_OK): JsonResponse
+
+    public static function forbidden($message = 'Warning', $errors = [], $data = [], $others = [], $code = Response::HTTP_FORBIDDEN): JsonResponse
     {
         return response()->json(
             [
@@ -105,21 +106,7 @@ class ApiResponseService
         );
     }
 
-    public static function forbidden($message = 'Warning', $errors = [], $data = [], $others = [], $code = Response::HTTP_OK): JsonResponse
-    {
-        return response()->json(
-            [
-                'status' => false,
-                'message' => $message,
-                'errors' => $errors,
-                'data' => $data,
-                'others' => $others,
-            ],
-            $code
-        );
-    }
-
-    public static function badRequest($message = 'Warning', $errors = [], $data = [], $others = [], $code = Response::HTTP_OK): JsonResponse
+    public static function badRequest($message = 'Warning', $errors = [], $data = [], $others = [], $code = Response::HTTP_BAD_REQUEST): JsonResponse
     {
         return response()->json(
             [
