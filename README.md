@@ -1,66 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Documentación del Proyecto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Instrucciones
 
-## About Laravel
+1. **Crea un repositorio en GitHub**: Genera un nuevo repositorio en GitHub para este proyecto.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2. **Realiza los siguientes ejercicios**: Completa los ejercicios descritos a continuación.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Formato de Entrega
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Al finalizar, sube todo el proyecto al repositorio creado.
+- Comparte el enlace del repositorio con el usuario `makroz@hotmail.com` para que pueda clonar y revisar tu trabajo.
 
-## Learning Laravel
+## Informar al Finalizar la Entrega
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Envía un correo electrónico a los siguientes destinatarios para informar que has terminado la entrega:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **CEO**: [douglasdiez@condaty.com](mailto:douglasdiez@condaty.com)
+- **COO**: [brendamel.fos@gmail.com](mailto:brendamel.fos@gmail.com)
+- **Copia**:
+  - Encargada de Recursos Humanos: [karen.rocha.fos@gmail.com](mailto:karen.rocha.fos@gmail.com)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Ejercicios
 
-## Laravel Sponsors
+### Ejercicio 1: CRUD de Productos
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Crea un CRUD (Create, Read, Update, Delete) para la entidad "Producto".
 
-### Premium Partners
+#### Requisitos
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Un producto debe tener los siguientes campos: `id`, `nombre`, `descripción`, `precio`, `cantidad`, `created_at`, `updated_at`.
+- Implementa las rutas, controladores y vistas necesarias para crear, leer, actualizar y eliminar productos.
+- Utiliza validaciones en el controlador para asegurarte de que los datos son correctos antes de guardarlos en la base de datos.
 
-## Contributing
+### Ejercicio 2: Relación entre Tablas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Crea una relación entre los productos y las categorías.
 
-## Code of Conduct
+#### Requisitos
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Una categoría debe tener los siguientes campos: `id`, `nombre`, `descripción`, `created_at`, `updated_at`.
+- Un producto puede pertenecer a una sola categoría, y una categoría puede tener muchos productos.
+- Implementa las migraciones necesarias para crear las tablas y sus relaciones.
+- En el formulario de creación y edición de productos, añade un select para seleccionar la categoría del producto.
 
-## Security Vulnerabilities
+### Ejercicio 3: Subida de Imágenes
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Añade la funcionalidad para subir imágenes de los productos.
 
-## License
+#### Requisitos
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Un producto puede tener una imagen asociada.
+- Al crear o editar un producto, debe haber un campo para subir una imagen.
+- Guarda las imágenes en el storage de Laravel.
+- Muestra la imagen del producto en la vista de detalle y listado de productos.
+
+### Ejercicio 4: API REST
+
+Crea una API REST para gestionar los productos.
+
+#### Requisitos
+
+- Implementa las rutas y controladores necesarios para realizar operaciones CRUD mediante la API.
+- Las rutas deben ser `/api/productos`, `/api/productos/{id}` para los endpoints de productos.
+- Asegúrate de devolver las respuestas en formato JSON.
+- Añade validaciones a las peticiones.
+
+### Ejercicio 5: Autenticación
+
+Implementa un sistema de autenticación básico.
+
+#### Requisitos
+
+- Utiliza la autenticación proporcionada por Laravel para permitir a los usuarios registrarse y autenticarse.
+- Protege las rutas del CRUD de productos para que solo los usuarios autenticados puedan acceder a ellas.
+- Añade middleware para redirigir a los usuarios no autenticados a la página de inicio de sesión.
+
