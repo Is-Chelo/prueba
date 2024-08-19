@@ -1,0 +1,11 @@
+{
+    "status": true,
+    "message": "Login correcto.",
+    "errors": [],
+    "data": {
+        "token": "5|iPkrWUHEEJrAZD8u1MS2jvTfYqSRqRMpCm2xdUCz0380c43b",
+        "expiration_date": "2025-02-19T14:11:14.968924Z",
+        "user": {}
+    },
+    "others": []
+}

@@ -16,12 +16,12 @@ class ProductResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'category_id' => $this->category_id,
             'nombre' => $this->nombre,
             'descripcion' => $this->descripcion,
             'precio' => $this->precio,
             'cantidad' => $this->cantidad,
             'image' => $this->image == null ? null : UploadService::getUrl($this->image, 'public'),
+            'category' => $this->whenLoaded('category', new CategoryResource($this->category))
         ];
     }
 }

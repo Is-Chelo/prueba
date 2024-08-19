@@ -14,7 +14,10 @@ class ProductOverView extends BaseWidget
         $stats = [];
 
         foreach ($categories as $category) {
-            $stats[] = Stat::make($category->nombre, $category->products_count);
+            $stats[] = Stat::make($category->nombre, $category->products_count)
+                ->description("Total de la categoria")
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->color('success');
         }
 
         return $stats;

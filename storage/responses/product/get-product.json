@@ -1,0 +1,19 @@
+{
+    "ststus": true,
+    "message": "Datos obtenidos",
+    "errors": [],
+    "data": {
+        "nombre": "Producto 5 Editado",
+        "descripcion": "Descripcion 1",
+        "precio": 10,
+        "cantidad": 1,
+        "image": "http://127.0.0.1:8000/storage/1723851231.png",
+        "category": {
+            "nombre": "Electronica",
+            "descripcion": "Articulos electronicos para telefonos, computadoras, etc",
+            "creado": null,
+            "actualizado": null
+        }
+    },
+    "others": []
+}

@@ -1,0 +1,12 @@
+{
+    "ststus": true,
+    "message": "Datos obtenidos",
+    "errors": [],
+    "data": {
+        "nombre": "Ropa",
+        "descripcion": "Descripcion de la Ropa",
+        "creado": "2024-08-16 14:05:16",
+        "actualizado": "2024-08-16 14:05:16"
+    },
+    "others": []
+}

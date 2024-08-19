@@ -9,6 +9,10 @@ use App\Repositories\Category\CategoryInterface;
 use App\Services\ApiResponseService;
 use App\Traits\RegisterLogs;
 
+/**
+ * @group Categorias
+ *
+ */
 class CategoryController extends Controller
 {
     use RegisterLogs;
@@ -17,6 +21,14 @@ class CategoryController extends Controller
     ) {}
 
 
+    /**
+     * Listado de las Categorias
+     *
+     * Obtiene los datos de las categorias
+     *
+     * @responseFile 200 responses/category/get-categories.json
+     *
+     */
     public function index()
     {
         $categories = $this->category_repository->get();
@@ -24,14 +36,37 @@ class CategoryController extends Controller
     }
 
 
-
+    /**
+     * Crear una Categoria
+     *
+     * Endpoint para crear una categoria
+     *
+     * @responseFile 201 responses/category/get-category.json
+     *
+     * @bodyParam nombre string required
+     * Nombre de la categoria que deseamos crear Example: Ropa
+     *
+     * @bodyParam descripcion
+     * Descripcon de la categoria Example: Ropa para todo tipo de edad
+     *
+     */
     public function store(CategoryRequest $request)
     {
         $category = $this->category_repository->save(null, $request->validated());
         return ApiResponseService::create('Categoria Creada Correctamente.',  new CategoryResource($category));
     }
 
-
+    /**
+     * Obtiene una Categoria
+     *
+     * Obtiene una categoria por ID
+     *
+     * @responseFile 200 responses/category/get-category.json
+     *
+     * @pathParam id
+     * Id de la categoria que deseamos obtener Example: 1
+     *
+     */
     public function show(int $id)
     {
         try {
@@ -43,6 +78,17 @@ class CategoryController extends Controller
     }
 
 
+    /**
+     * Actualizar una Categoria
+     *
+     * Endpoint para actualizar una categoria
+     *
+     * @responseFile 201 responses/category/get-category.json
+     *
+     * @pathParam id
+     * Id de la categoria que deseamos actualizar Example: 1
+     *
+     */
     public function update(CategoryRequestUpdate $request, int $id)
     {
         try {
@@ -55,12 +101,22 @@ class CategoryController extends Controller
         }
     }
 
-
+    /**
+     * Eliminar una Categoria
+     *
+     * Endpoint para elimiar una categoria
+     *
+     * @responseFile 200
+     *
+     * @pathParam id
+     * Id de la categoria que deseamos elimiar Example: 1
+     *
+     */
     public function destroy(int $id)
     {
         try {
             $category = $this->category_repository->delete(id: $id);
-            return ApiResponseService::create('Categoria Eliminada Correctamente.',  null);
+            return ApiResponseService::success('Categoria Eliminada Correctamente.',  null);
         } catch (\Exception $e) {
             return $this->log($e);
         }

@@ -11,6 +11,10 @@ use App\Services\ApiResponseService;
 use App\Services\UploadService;
 use App\Traits\RegisterLogs;
 
+/**
+ * @group Productos
+ *
+ */
 class ProductController extends Controller
 {
 
@@ -22,13 +26,48 @@ class ProductController extends Controller
     ) {}
 
 
+    /**
+     * Listado de las Productos
+     *
+     * Obtiene los datos de las productos
+     *
+     * @responseFile 200 responses/product/get-products.json
+     *
+     */
     public function index()
     {
-        $products = $this->product_repository->get();
+        $products = $this->product_repository->get(relationships: ['category']);
         return ApiResponseService::success('Datos Obtenidos', ProductResource::collection($products));
     }
 
 
+    /**
+     * Crear un Producto
+     *
+     * Obtiene los datos de las productos
+     *
+     * @responseFile 200 responses/product/get-product.json
+     *
+     * @bodyParam nombre string required
+     * Nombre del Producto Example: Polera Edicion 2024
+     *
+     * @bodyParam descripcion string required
+     * Descripcion del Producto Example: Descripcion
+     *
+     *
+     * @bodyParam category_id int required
+     * categoria_id del Producto Example: 1
+     *
+     * @bodyParam precio float required
+     * Precio del Producto Example: 10.45
+     *
+     * @bodyParam cantidad int required
+     * Cantidad del Producto Example: 10
+     *
+     * @bodyParam thumbnail image required
+     *
+     *
+     */
     public function store(ProductRequest $request)
     {
         try {
@@ -48,10 +87,21 @@ class ProductController extends Controller
     }
 
 
+    /**
+     * Obtener un producto
+     *
+     * Obtiene los datos de las productos
+     *
+     * @responseFile 200 responses/category/get-categories.json
+     *
+     * @pathParam id
+     * Id del producto que deseamos obtener Example: 1
+     *
+     */
     public function show(int $id)
     {
         try {
-            $product = $this->product_repository->getById(where: [], id: $id);
+            $product = $this->product_repository->getById(where: [], id: $id, relationships: ['category']);
             return ApiResponseService::success('Datos Obtenidos', new ProductResource($product));
         } catch (\Exception $e) {
             return $this->log($e);
@@ -59,6 +109,35 @@ class ProductController extends Controller
     }
 
 
+    /**
+     * Actualizar una Producto
+     *
+     * Endpoint para actualizar una producto
+     *
+     * @responseFile 201 responses/product/get-product.json
+     *
+     * @pathParam id
+     * Id de la producto que deseamos actualizar Example: 1
+     *
+     * @bodyParam nombre string required
+     * Nombre del Producto Example: Polera Edicion 2024
+     *
+     * @bodyParam descripcion string required
+     * Descripcion del Producto Example: Descripcion
+     *
+     *
+     * @bodyParam category_id int required
+     * categoria_id del Producto Example: 1
+     *
+     * @bodyParam precio float required
+     * Precio del Producto Example: 10.45
+     *
+     * @bodyParam cantidad int required
+     * Cantidad del Producto Example: 10
+     *
+     * @bodyParam thumbnail image required
+     *
+     */
     public function update(ProductRequestUpdate $request, int $id)
     {
         try {
@@ -80,6 +159,17 @@ class ProductController extends Controller
     }
 
 
+    /**
+     * Eliminar un Producto
+     *
+     * Endpoint para elimiar una producto
+     *
+     * @responseFile 200
+     *
+     * @pathParam id
+     * Id de la producto que deseamos elimiar Example: 1
+     *
+     */
     public function destroy(int $id)
     {
         try {
